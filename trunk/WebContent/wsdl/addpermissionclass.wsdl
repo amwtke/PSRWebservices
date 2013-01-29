@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="AddPermissionClassService" targetNamespace="http://permission.psr.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://permission.psr.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+<schema xmlns="http://www.w3.org/2001/XMLSchema">
+  <import namespace="http://permission.psr.com/" schemaLocation="addpermissionclass_schema1.xsd"/>
+</schema>
+  </wsdl:types>
+  <wsdl:message name="SQLException">
+    <wsdl:part name="SQLException" element="tns:SQLException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AddPermissions">
+    <wsdl:part name="parameters" element="tns:AddPermissions">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AddPermissionsResponse">
+    <wsdl:part name="parameters" element="tns:AddPermissionsResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ClassNotFoundException">
+    <wsdl:part name="ClassNotFoundException" element="tns:ClassNotFoundException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="AddPermissionSEI">
+    <wsdl:operation name="AddPermissions">
+      <wsdl:input name="AddPermissions" message="tns:AddPermissions">
+    </wsdl:input>
+      <wsdl:output name="AddPermissionsResponse" message="tns:AddPermissionsResponse">
+    </wsdl:output>
+      <wsdl:fault name="ClassNotFoundException" message="tns:ClassNotFoundException">
+    </wsdl:fault>
+      <wsdl:fault name="SQLException" message="tns:SQLException">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AddPermissionClassServiceSoapBinding" type="tns:AddPermissionSEI">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="AddPermissions">
+      <soap:operation soapAction="urn:AddPermissions" style="document"/>
+      <wsdl:input name="AddPermissions">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="AddPermissionsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ClassNotFoundException">
+        <soap:fault name="ClassNotFoundException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SQLException">
+        <soap:fault name="SQLException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AddPermissionClassService">
+    <wsdl:port name="AddPermissionClassPort" binding="tns:AddPermissionClassServiceSoapBinding">
+      <soap:address location="http://localhost:9090/AddPermissionClassPort"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
