@@ -6,9 +6,9 @@ import java.sql.SQLException;
 
 public class JDBCUtil {
 	private final static String DB_DRIVER = "oracle.jdbc.driver.OracleDriver";
-	private final static String DB_CONNECTION = "jdbc:oracle:thin:@192.168.1.112:1521:PRODUCE";
-	private final static String DB_NAME = "PRODUCE";
-	private final static String DB_PWd = "oracle";
+	private final static String DB_CONNECTION = "jdbc:oracle:thin:@192.168.1.102:1521:orcl";
+	private final static String DB_NAME = "psr";
+	private final static String DB_PWd = "123456";
 
 	static Connection conn = null;
 	static {

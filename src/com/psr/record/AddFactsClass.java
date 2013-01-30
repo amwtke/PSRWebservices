@@ -8,7 +8,10 @@ import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class AddFactsClass {
+import javax.jws.WebService;
+
+@WebService(targetNamespace = "http://record.psr.com/", endpointInterface = "com.psr.record.AddFactsSEI", portName = "AddFactsClassPort", serviceName = "AddFactsClassService")
+public class AddFactsClass implements AddFactsSEI {
 	
 //	public static void main(String args[]) throws ClassNotFoundException, SQLException
 //	{
@@ -23,6 +26,7 @@ public class AddFactsClass {
 //		f.setRecordID("6afabd85264743549c77dea155df2637");
 //		f.setFactNo(1);
 //		f.setAssociateResult(0);
+//		f.setImagesPath("kkk\\kdjflas\\");
 //		_l.add(f);
 //		_add.AddFacts(_l);
 //	}
@@ -30,7 +34,7 @@ public class AddFactsClass {
 		CallableStatement cs = null;
 		try
 		{
-			cs = JDBCUtil.GetConnection().prepareCall("{call addfact(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}");
+			cs = JDBCUtil.GetConnection().prepareCall("{call addfact(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}");
 			if(facts!=null && facts.size()>0)
 			{
 				for(Fact fact : facts)
@@ -64,6 +68,7 @@ public class AddFactsClass {
 					cs.setString(16, fact.getStrFactApproveComment());
 					cs.setString(17,fact.getStrFactStatus());
 					cs.setInt(18,fact.getFactNo());
+					cs.setString(19, fact.getImagesPath());
 					cs.execute();
 				}
 			}
