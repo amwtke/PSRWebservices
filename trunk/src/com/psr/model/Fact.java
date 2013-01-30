@@ -24,7 +24,16 @@ public class Fact extends BasicEntity {
 	private Integer associateResult;
 	private Boolean isFh;
 	private Boolean isPc;
+	private String imagesPath;
+	
+	public String getImagesPath() {
+		return imagesPath;
+	}
 
+	public void setImagesPath(String imagesPath) {
+		this.imagesPath = imagesPath;
+	}
+	
 	public String getRecordID() {
 		return recordID;
 	}

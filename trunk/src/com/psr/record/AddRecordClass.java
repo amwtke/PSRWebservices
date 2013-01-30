@@ -5,10 +5,13 @@ import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.jws.WebService;
+
 import com.psr.model.Record;
 import com.psr.util.JDBCUtil;
 
-public class AddRecordClass {
+@WebService(targetNamespace = "http://record.psr.com/", endpointInterface = "com.psr.record.AddRecordsSEI", portName = "AddRecordClassPort", serviceName = "AddRecordClassService")
+public class AddRecordClass implements AddRecordsSEI {
 	
 //	public static void main(String args[]) throws ClassNotFoundException, SQLException
 //	{
