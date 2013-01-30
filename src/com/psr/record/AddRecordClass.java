@@ -59,6 +59,8 @@ public class AddRecordClass implements AddRecordsSEI {
 					{
 						cs.setDate(2, new java.sql.Date(record.getCreateDate().getTime()));
 					}
+					else
+						cs.setDate(2, null);
 					
 					cs.setString(3,record.getCreateUser());//uuid
 					
