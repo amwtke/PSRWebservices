@@ -1,5 +1,5 @@
 
-  CREATE OR REPLACE PROCEDURE "PRODUCE"."ADDFACT" 
+  CREATE OR REPLACE PROCEDURE ADDFACT
 (
   p_id in psr_fact.id%type  
 , p_create_date in psr_fact.create_date%type  
@@ -36,7 +36,7 @@ end addfact;
 /
  
 
-  CREATE OR REPLACE PROCEDURE "PRODUCE"."ADDPERMISSION" 
+  CREATE OR REPLACE PROCEDURE ADDPERMISSION
 (
   p_id in sys_permission.id%type  
 , p_version in sys_permission.version%type  
@@ -66,7 +66,7 @@ end addpermission;
 /
  
 
-  CREATE OR REPLACE PROCEDURE "PRODUCE"."ADDRECORD" 
+  CREATE OR REPLACE PROCEDURE ADDRECORD
 (
   v_id in psr_record.id%type  
 , v_create_date in psr_record.create_date%type  
@@ -134,7 +134,7 @@ end addrecord;
 /
  
 
-  CREATE OR REPLACE PROCEDURE "PRODUCE"."ADDRESULT" 
+  CREATE OR REPLACE PROCEDURE ADDRESULT
 (
   p_id in psr_recordresult.id%type  
 , p_create_date in psr_recordresult.create_date%type  
@@ -165,7 +165,7 @@ end addresult;
 /
  
 
-  CREATE OR REPLACE PROCEDURE "PRODUCE"."ADDUSER" 
+  CREATE OR REPLACE PROCEDURE ADDUSER
 (
   p_id in sys_user.id%type  
 , p_version in sys_user.version%type  
@@ -195,7 +195,7 @@ end adduser;
 /
  
 
-  CREATE OR REPLACE PROCEDURE "PRODUCE"."ADDUSERPERMISSIONREL" 
+  CREATE OR REPLACE PROCEDURE ADDUSERPERMISSIONREL
 (
   p_id in sys_userpermission_rel.id%type  
 , p_version in sys_userpermission_rel.version%type  
@@ -214,7 +214,7 @@ end adduserpermissionrel;
 /
  
 
-  CREATE OR REPLACE PROCEDURE "PRODUCE"."SHOWALLPERMISSION" 
+  CREATE OR REPLACE PROCEDURE SHOWALLPERMISSION
 (
   permissions out permissionpkg.permissioncursor 
 ) as 
@@ -223,8 +223,7 @@ begin
 end showallpermission;
 /
  
-
-  CREATE OR REPLACE PROCEDURE "PRODUCE"."SHOWALLUSER" 
+  CREATE OR REPLACE PROCEDURE SHOWALLUSER
 (
   users out userpkg.usercursor  
 ) as 
@@ -234,7 +233,7 @@ end showalluser;
 /
  
 
-  CREATE OR REPLACE PROCEDURE "PRODUCE"."TEST" 
+  CREATE OR REPLACE PROCEDURE TEST
 (
   param1 out integer  
 ) as 
