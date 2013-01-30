@@ -1,5 +1,6 @@
 
-  CREATE OR REPLACE PROCEDURE ADDFACT
+  create or replace
+PROCEDURE ADDFACT
 (
   p_id in psr_fact.id%type  
 , p_create_date in psr_fact.create_date%type  
@@ -19,6 +20,7 @@
 , p_strfactapprovecomment in psr_fact.strfactapprovecomment%type  
 , p_strfactstatus in psr_fact.strfactstatus%type  
 , p_factno in psr_fact.factno%type  
+, p_images_path in psr_fact.images_path%type
 ) as 
 v_count integer;
 
@@ -29,8 +31,8 @@ begin
   commit;
   end if;
   
-  Insert into PSR_FACT (ID,CREATE_DATE,CREATE_USER,ENTITY_STATUS,UPDATE_DATE,UPDATE_USER,VERSION,AGAINSTFACTS,ASSOCIATERESULT,CONTENT,FUHEXIANG,ISFH,ISPC,PIANCHAXIANG,RECORDID,STRFACTAPPROVECOMMENT,STRFACTSTATUS,FACTNO) 
-  values (p_id,p_create_date,p_create_user,p_entity_status,p_update_date,p_update_user,0,p_againstfacts,p_associateresult,p_content,p_fuhexiang,p_isfh,p_ispc,p_pianchaxiang,p_recordid,p_strfactapprovecomment,p_strfactstatus,p_factno);
+  Insert into PSR_FACT (ID,CREATE_DATE,CREATE_USER,ENTITY_STATUS,UPDATE_DATE,UPDATE_USER,VERSION,AGAINSTFACTS,ASSOCIATERESULT,CONTENT,FUHEXIANG,ISFH,ISPC,PIANCHAXIANG,RECORDID,STRFACTAPPROVECOMMENT,STRFACTSTATUS,FACTNO,images_path) 
+  values (p_id,p_create_date,p_create_user,p_entity_status,p_update_date,p_update_user,0,p_againstfacts,p_associateresult,p_content,p_fuhexiang,p_isfh,p_ispc,p_pianchaxiang,p_recordid,p_strfactapprovecomment,p_strfactstatus,p_factno,p_images_path);
   commit;
 end addfact;
 /
