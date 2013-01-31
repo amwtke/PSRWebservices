@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="AddUserClassService" targetNamespace="http://user.psr.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://user.psr.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+<schema xmlns="http://www.w3.org/2001/XMLSchema">
+  <import namespace="http://user.psr.com/" schemaLocation="adduserclass_schema1.xsd"/>
+</schema>
+  </wsdl:types>
+  <wsdl:message name="ClassNotFoundException">
+    <wsdl:part name="ClassNotFoundException" element="tns:ClassNotFoundException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AddUser">
+    <wsdl:part name="parameters" element="tns:AddUser">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SQLException">
+    <wsdl:part name="SQLException" element="tns:SQLException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AddUserResponse">
+    <wsdl:part name="parameters" element="tns:AddUserResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="AddUserSEI">
+    <wsdl:operation name="AddUser">
+      <wsdl:input name="AddUser" message="tns:AddUser">
+    </wsdl:input>
+      <wsdl:output name="AddUserResponse" message="tns:AddUserResponse">
+    </wsdl:output>
+      <wsdl:fault name="ClassNotFoundException" message="tns:ClassNotFoundException">
+    </wsdl:fault>
+      <wsdl:fault name="SQLException" message="tns:SQLException">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AddUserClassServiceSoapBinding" type="tns:AddUserSEI">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="AddUser">
+      <soap:operation soapAction="urn:AddUser" style="document"/>
+      <wsdl:input name="AddUser">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="AddUserResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ClassNotFoundException">
+        <soap:fault name="ClassNotFoundException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SQLException">
+        <soap:fault name="SQLException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AddUserClassService">
+    <wsdl:port name="AddUserClassPort" binding="tns:AddUserClassServiceSoapBinding">
+      <soap:address location="http://localhost:9090/AddUserClassPort"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

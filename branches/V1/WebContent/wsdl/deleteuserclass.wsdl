@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="DeleteUserClassService" targetNamespace="http://user.psr.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://user.psr.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+<schema xmlns="http://www.w3.org/2001/XMLSchema">
+  <import namespace="http://user.psr.com/" schemaLocation="deleteuserclass_schema1.xsd"/>
+</schema>
+  </wsdl:types>
+  <wsdl:message name="ClassNotFoundException">
+    <wsdl:part name="ClassNotFoundException" element="tns:ClassNotFoundException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DeleteUserResponse">
+    <wsdl:part name="parameters" element="tns:DeleteUserResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DeleteUser">
+    <wsdl:part name="parameters" element="tns:DeleteUser">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SQLException">
+    <wsdl:part name="SQLException" element="tns:SQLException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="DeleteUserSEI">
+    <wsdl:operation name="DeleteUser">
+      <wsdl:input name="DeleteUser" message="tns:DeleteUser">
+    </wsdl:input>
+      <wsdl:output name="DeleteUserResponse" message="tns:DeleteUserResponse">
+    </wsdl:output>
+      <wsdl:fault name="ClassNotFoundException" message="tns:ClassNotFoundException">
+    </wsdl:fault>
+      <wsdl:fault name="SQLException" message="tns:SQLException">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="DeleteUserClassServiceSoapBinding" type="tns:DeleteUserSEI">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="DeleteUser">
+      <soap:operation soapAction="urn:DeleteUser" style="document"/>
+      <wsdl:input name="DeleteUser">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="DeleteUserResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ClassNotFoundException">
+        <soap:fault name="ClassNotFoundException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SQLException">
+        <soap:fault name="SQLException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DeleteUserClassService">
+    <wsdl:port name="DeleteUserClassPort" binding="tns:DeleteUserClassServiceSoapBinding">
+      <soap:address location="http://localhost:9090/DeleteUserClassPort"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

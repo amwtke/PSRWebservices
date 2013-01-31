@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?><xs:schema xmlns:tns="http://user.psr.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://user.psr.com/">
+  <xs:element name="GetUserUUID" type="tns:GetUserUUID"/>
+  <xs:element name="GetUserUUIDResponse" type="tns:GetUserUUIDResponse"/>
+  <xs:complexType name="GetUserUUID">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GetUserUUIDResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ClassNotFoundException" type="tns:ClassNotFoundException"/>
+  <xs:complexType name="ClassNotFoundException">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:element name="SQLException" type="tns:SQLException"/>
+  <xs:complexType name="SQLException">
+    <xs:sequence>
+      <xs:element name="errorCode" nillable="true" type="xs:int"/>
+      <xs:element name="sQLState" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

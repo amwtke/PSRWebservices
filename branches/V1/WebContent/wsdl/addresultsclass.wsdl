@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="AddResultsClassService" targetNamespace="http://record.psr.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://record.psr.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+<schema xmlns="http://www.w3.org/2001/XMLSchema">
+  <import namespace="http://record.psr.com/" schemaLocation="addresultsclass_schema1.xsd"/>
+</schema>
+  </wsdl:types>
+  <wsdl:message name="AddResults">
+    <wsdl:part name="parameters" element="tns:AddResults">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ClassNotFoundException">
+    <wsdl:part name="ClassNotFoundException" element="tns:ClassNotFoundException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AddResultsResponse">
+    <wsdl:part name="parameters" element="tns:AddResultsResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SQLException">
+    <wsdl:part name="SQLException" element="tns:SQLException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="AddResultsSEI">
+    <wsdl:operation name="AddResults">
+      <wsdl:input name="AddResults" message="tns:AddResults">
+    </wsdl:input>
+      <wsdl:output name="AddResultsResponse" message="tns:AddResultsResponse">
+    </wsdl:output>
+      <wsdl:fault name="ClassNotFoundException" message="tns:ClassNotFoundException">
+    </wsdl:fault>
+      <wsdl:fault name="SQLException" message="tns:SQLException">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AddResultsClassServiceSoapBinding" type="tns:AddResultsSEI">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="AddResults">
+      <soap:operation soapAction="urn:AddResults" style="document"/>
+      <wsdl:input name="AddResults">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="AddResultsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ClassNotFoundException">
+        <soap:fault name="ClassNotFoundException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SQLException">
+        <soap:fault name="SQLException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AddResultsClassService">
+    <wsdl:port name="AddResultsClassPort" binding="tns:AddResultsClassServiceSoapBinding">
+      <soap:address location="http://localhost:9090/AddResultsClassPort"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

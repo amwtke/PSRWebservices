@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://permission.psr.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://permission.psr.com/">
+  <xs:element name="DeleteAllPermission" type="tns:DeleteAllPermission"/>
+  <xs:element name="DeleteAllPermissionResponse" type="tns:DeleteAllPermissionResponse"/>
+  <xs:complexType name="DeleteAllPermission">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="DeleteAllPermissionResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:element name="SQLException" type="tns:SQLException"/>
+  <xs:complexType name="SQLException">
+    <xs:sequence>
+      <xs:element name="errorCode" nillable="true" type="xs:int"/>
+      <xs:element name="sQLState" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ClassNotFoundException" type="tns:ClassNotFoundException"/>
+  <xs:complexType name="ClassNotFoundException">
+    <xs:sequence/>
+  </xs:complexType>
+</xs:schema>
