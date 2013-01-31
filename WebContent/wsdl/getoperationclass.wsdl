@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="GetOperationClassService" targetNamespace="http://record.psr.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://record.psr.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+<schema xmlns="http://www.w3.org/2001/XMLSchema">
+  <import namespace="http://record.psr.com/" schemaLocation="getoperationclass_schema1.xsd"/>
+</schema>
+  </wsdl:types>
+  <wsdl:message name="GetFacts">
+    <wsdl:part name="parameters" element="tns:GetFacts">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ClassNotFoundException">
+    <wsdl:part name="ClassNotFoundException" element="tns:ClassNotFoundException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetResultsResponse">
+    <wsdl:part name="parameters" element="tns:GetResultsResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetResults">
+    <wsdl:part name="parameters" element="tns:GetResults">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetFactsResponse">
+    <wsdl:part name="parameters" element="tns:GetFactsResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetRecordsResponse">
+    <wsdl:part name="parameters" element="tns:GetRecordsResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetRecords">
+    <wsdl:part name="parameters" element="tns:GetRecords">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SQLException">
+    <wsdl:part name="SQLException" element="tns:SQLException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="GetOperationSEI">
+    <wsdl:operation name="GetResults">
+      <wsdl:input name="GetResults" message="tns:GetResults">
+    </wsdl:input>
+      <wsdl:output name="GetResultsResponse" message="tns:GetResultsResponse">
+    </wsdl:output>
+      <wsdl:fault name="ClassNotFoundException" message="tns:ClassNotFoundException">
+    </wsdl:fault>
+      <wsdl:fault name="SQLException" message="tns:SQLException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetFacts">
+      <wsdl:input name="GetFacts" message="tns:GetFacts">
+    </wsdl:input>
+      <wsdl:output name="GetFactsResponse" message="tns:GetFactsResponse">
+    </wsdl:output>
+      <wsdl:fault name="ClassNotFoundException" message="tns:ClassNotFoundException">
+    </wsdl:fault>
+      <wsdl:fault name="SQLException" message="tns:SQLException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetRecords">
+      <wsdl:input name="GetRecords" message="tns:GetRecords">
+    </wsdl:input>
+      <wsdl:output name="GetRecordsResponse" message="tns:GetRecordsResponse">
+    </wsdl:output>
+      <wsdl:fault name="ClassNotFoundException" message="tns:ClassNotFoundException">
+    </wsdl:fault>
+      <wsdl:fault name="SQLException" message="tns:SQLException">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="GetOperationClassServiceSoapBinding" type="tns:GetOperationSEI">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetResults">
+      <soap:operation soapAction="urn:GetResults" style="document"/>
+      <wsdl:input name="GetResults">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetResultsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ClassNotFoundException">
+        <soap:fault name="ClassNotFoundException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SQLException">
+        <soap:fault name="SQLException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetFacts">
+      <soap:operation soapAction="urn:GetFacts" style="document"/>
+      <wsdl:input name="GetFacts">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetFactsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ClassNotFoundException">
+        <soap:fault name="ClassNotFoundException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SQLException">
+        <soap:fault name="SQLException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetRecords">
+      <soap:operation soapAction="urn:GetRecords" style="document"/>
+      <wsdl:input name="GetRecords">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetRecordsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ClassNotFoundException">
+        <soap:fault name="ClassNotFoundException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SQLException">
+        <soap:fault name="SQLException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="GetOperationClassService">
+    <wsdl:port name="GetOperationClassPort" binding="tns:GetOperationClassServiceSoapBinding">
+      <soap:address location="http://localhost:9090/GetOperationClassPort"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

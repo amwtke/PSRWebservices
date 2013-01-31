@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://record.psr.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://record.psr.com/">
+  <xs:element name="GetFacts" type="tns:GetFacts"/>
+  <xs:element name="GetFactsResponse" type="tns:GetFactsResponse"/>
+  <xs:element name="GetRecords" type="tns:GetRecords"/>
+  <xs:element name="GetRecordsResponse" type="tns:GetRecordsResponse"/>
+  <xs:element name="GetResults" type="tns:GetResults"/>
+  <xs:element name="GetResultsResponse" type="tns:GetResultsResponse"/>
+  <xs:complexType name="GetResults">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GetResultsResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:recordResult"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="recordResult">
+    <xs:complexContent>
+      <xs:extension base="tns:basicEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="content" type="xs:string"/>
+          <xs:element minOccurs="0" name="factNos" type="xs:string"/>
+          <xs:element minOccurs="0" name="isFH" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="isPC" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="itemName" type="xs:string"/>
+          <xs:element minOccurs="0" name="recordID" type="xs:string"/>
+          <xs:element minOccurs="0" name="recordNo" type="xs:string"/>
+          <xs:element minOccurs="0" name="resultNo" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="basicEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="createDate" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="createUser" type="xs:string"/>
+      <xs:element minOccurs="0" name="entityStatus" type="xs:int"/>
+      <xs:element minOccurs="0" name="id" type="xs:string"/>
+      <xs:element minOccurs="0" name="updateDate" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="updateUser" type="xs:string"/>
+      <xs:element minOccurs="0" name="version" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="arrayList">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractList">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType abstract="true" name="abstractList">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractCollection">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType abstract="true" name="abstractCollection">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="GetFacts">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GetFactsResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:fact"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="fact">
+    <xs:complexContent>
+      <xs:extension base="tns:basicEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="againstFacts" type="xs:string"/>
+          <xs:element minOccurs="0" name="associateResult" type="xs:int"/>
+          <xs:element minOccurs="0" name="content" type="xs:string"/>
+          <xs:element minOccurs="0" name="factNo" type="xs:int"/>
+          <xs:element minOccurs="0" name="fuHeXiang" type="xs:string"/>
+          <xs:element minOccurs="0" name="imagesPath" type="xs:string"/>
+          <xs:element minOccurs="0" name="isFh" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="isPc" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="pianChaXiang" type="xs:string"/>
+          <xs:element minOccurs="0" name="recordID" type="xs:string"/>
+          <xs:element minOccurs="0" name="recordNo" type="xs:string"/>
+          <xs:element minOccurs="0" name="strFactApproveComment" type="xs:string"/>
+          <xs:element minOccurs="0" name="strFactStatus" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="GetRecords">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GetRecordsResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:record"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="record">
+    <xs:complexContent>
+      <xs:extension base="tns:basicEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="approveBy" type="xs:string"/>
+          <xs:element minOccurs="0" name="approveTime" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="commentS" type="xs:string"/>
+          <xs:element minOccurs="0" name="count" type="xs:string"/>
+          <xs:element minOccurs="0" name="danwei" type="xs:string"/>
+          <xs:element minOccurs="0" name="equiptment" type="xs:string"/>
+          <xs:element minOccurs="0" name="facility" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="facts" nillable="true" type="tns:fact"/>
+          <xs:element minOccurs="0" name="haveAttached" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="haveqiangxiang" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="haveruoxiang" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="inputTime" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="inputUSer" type="xs:string"/>
+          <xs:element minOccurs="0" name="inputUSerSuoXie" type="xs:string"/>
+          <xs:element minOccurs="0" name="isActivityInspection" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="isCommunication" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="isCompliance" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="isDocumentRevision" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="isWalkDown" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="reSult" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="reSultS" nillable="true" type="tns:recordResult"/>
+          <xs:element minOccurs="0" name="recordDeSciption" type="xs:string"/>
+          <xs:element minOccurs="0" name="recordNo" type="xs:string"/>
+          <xs:element minOccurs="0" name="sendBackReaSon" type="xs:string"/>
+          <xs:element minOccurs="0" name="status" type="xs:string"/>
+          <xs:element minOccurs="0" name="topic" type="xs:string"/>
+          <xs:element minOccurs="0" name="topicDesc" type="xs:string"/>
+          <xs:element minOccurs="0" name="upLoadedTime" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="updatedTime" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="yaoSubianhao" type="xs:string"/>
+          <xs:element minOccurs="0" name="zhuangtibianhao" type="xs:string"/>
+          <xs:element minOccurs="0" name="iSUpDated" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="iSUpLoad" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SQLException" type="tns:SQLException"/>
+  <xs:complexType name="SQLException">
+    <xs:sequence>
+      <xs:element name="errorCode" nillable="true" type="xs:int"/>
+      <xs:element name="sQLState" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ClassNotFoundException" type="tns:ClassNotFoundException"/>
+  <xs:complexType name="ClassNotFoundException">
+    <xs:sequence/>
+  </xs:complexType>
+</xs:schema>

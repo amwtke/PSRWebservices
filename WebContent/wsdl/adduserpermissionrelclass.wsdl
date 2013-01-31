@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="AddUserPermissionRelClassService" targetNamespace="http://userpermissionrel.psr.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://userpermissionrel.psr.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+<schema xmlns="http://www.w3.org/2001/XMLSchema">
+  <import namespace="http://userpermissionrel.psr.com/" schemaLocation="adduserpermissionrelclass_schema1.xsd"/>
+</schema>
+  </wsdl:types>
+  <wsdl:message name="SQLException">
+    <wsdl:part name="SQLException" element="tns:SQLException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AddUserPermissionRel">
+    <wsdl:part name="parameters" element="tns:AddUserPermissionRel">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ClassNotFoundException">
+    <wsdl:part name="ClassNotFoundException" element="tns:ClassNotFoundException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AddUserPermissionRelResponse">
+    <wsdl:part name="parameters" element="tns:AddUserPermissionRelResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="AddUserPermissionRelSEI">
+    <wsdl:operation name="AddUserPermissionRel">
+      <wsdl:input name="AddUserPermissionRel" message="tns:AddUserPermissionRel">
+    </wsdl:input>
+      <wsdl:output name="AddUserPermissionRelResponse" message="tns:AddUserPermissionRelResponse">
+    </wsdl:output>
+      <wsdl:fault name="ClassNotFoundException" message="tns:ClassNotFoundException">
+    </wsdl:fault>
+      <wsdl:fault name="SQLException" message="tns:SQLException">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AddUserPermissionRelClassServiceSoapBinding" type="tns:AddUserPermissionRelSEI">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="AddUserPermissionRel">
+      <soap:operation soapAction="urn:AddUserPermissionRel" style="document"/>
+      <wsdl:input name="AddUserPermissionRel">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="AddUserPermissionRelResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ClassNotFoundException">
+        <soap:fault name="ClassNotFoundException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SQLException">
+        <soap:fault name="SQLException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AddUserPermissionRelClassService">
+    <wsdl:port name="AddUserPermissionRelClassPort" binding="tns:AddUserPermissionRelClassServiceSoapBinding">
+      <soap:address location="http://localhost:9090/AddUserPermissionRelClassPort"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

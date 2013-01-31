@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="DeletePermissionClassService" targetNamespace="http://permission.psr.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://permission.psr.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+<schema xmlns="http://www.w3.org/2001/XMLSchema">
+  <import namespace="http://permission.psr.com/" schemaLocation="deletepermissionclass_schema1.xsd"/>
+</schema>
+  </wsdl:types>
+  <wsdl:message name="SQLException">
+    <wsdl:part name="SQLException" element="tns:SQLException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DeleteAllPermission">
+    <wsdl:part name="parameters" element="tns:DeleteAllPermission">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ClassNotFoundException">
+    <wsdl:part name="ClassNotFoundException" element="tns:ClassNotFoundException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DeleteAllPermissionResponse">
+    <wsdl:part name="parameters" element="tns:DeleteAllPermissionResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="DeleteAllPermissionSEI">
+    <wsdl:operation name="DeleteAllPermission">
+      <wsdl:input name="DeleteAllPermission" message="tns:DeleteAllPermission">
+    </wsdl:input>
+      <wsdl:output name="DeleteAllPermissionResponse" message="tns:DeleteAllPermissionResponse">
+    </wsdl:output>
+      <wsdl:fault name="ClassNotFoundException" message="tns:ClassNotFoundException">
+    </wsdl:fault>
+      <wsdl:fault name="SQLException" message="tns:SQLException">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="DeletePermissionClassServiceSoapBinding" type="tns:DeleteAllPermissionSEI">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="DeleteAllPermission">
+      <soap:operation soapAction="urn:DeleteAllPermission" style="document"/>
+      <wsdl:input name="DeleteAllPermission">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="DeleteAllPermissionResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ClassNotFoundException">
+        <soap:fault name="ClassNotFoundException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SQLException">
+        <soap:fault name="SQLException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DeletePermissionClassService">
+    <wsdl:port name="DeletePermissionClassPort" binding="tns:DeletePermissionClassServiceSoapBinding">
+      <soap:address location="http://localhost:9090/DeletePermissionClassPort"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

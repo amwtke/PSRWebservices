@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="AddFactsClassService" targetNamespace="http://record.psr.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://record.psr.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+<schema xmlns="http://www.w3.org/2001/XMLSchema">
+  <import namespace="http://record.psr.com/" schemaLocation="addfactsclass_schema1.xsd"/>
+</schema>
+  </wsdl:types>
+  <wsdl:message name="ClassNotFoundException">
+    <wsdl:part name="ClassNotFoundException" element="tns:ClassNotFoundException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AddFacts">
+    <wsdl:part name="parameters" element="tns:AddFacts">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AddFactsResponse">
+    <wsdl:part name="parameters" element="tns:AddFactsResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SQLException">
+    <wsdl:part name="SQLException" element="tns:SQLException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="AddFactsSEI">
+    <wsdl:operation name="AddFacts">
+      <wsdl:input name="AddFacts" message="tns:AddFacts">
+    </wsdl:input>
+      <wsdl:output name="AddFactsResponse" message="tns:AddFactsResponse">
+    </wsdl:output>
+      <wsdl:fault name="ClassNotFoundException" message="tns:ClassNotFoundException">
+    </wsdl:fault>
+      <wsdl:fault name="SQLException" message="tns:SQLException">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AddFactsClassServiceSoapBinding" type="tns:AddFactsSEI">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="AddFacts">
+      <soap:operation soapAction="urn:AddFacts" style="document"/>
+      <wsdl:input name="AddFacts">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="AddFactsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ClassNotFoundException">
+        <soap:fault name="ClassNotFoundException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SQLException">
+        <soap:fault name="SQLException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AddFactsClassService">
+    <wsdl:port name="AddFactsClassPort" binding="tns:AddFactsClassServiceSoapBinding">
+      <soap:address location="http://localhost:9090/AddFactsClassPort"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

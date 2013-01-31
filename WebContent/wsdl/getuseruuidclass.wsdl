@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="GetUserUUIDClassService" targetNamespace="http://user.psr.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://user.psr.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+<schema xmlns="http://www.w3.org/2001/XMLSchema">
+  <import namespace="http://user.psr.com/" schemaLocation="getuseruuidclass_schema1.xsd"/>
+</schema>
+  </wsdl:types>
+  <wsdl:message name="GetUserUUID">
+    <wsdl:part name="parameters" element="tns:GetUserUUID">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ClassNotFoundException">
+    <wsdl:part name="ClassNotFoundException" element="tns:ClassNotFoundException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetUserUUIDResponse">
+    <wsdl:part name="parameters" element="tns:GetUserUUIDResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SQLException">
+    <wsdl:part name="SQLException" element="tns:SQLException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="GetUserUUIDSEI">
+    <wsdl:operation name="GetUserUUID">
+      <wsdl:input name="GetUserUUID" message="tns:GetUserUUID">
+    </wsdl:input>
+      <wsdl:output name="GetUserUUIDResponse" message="tns:GetUserUUIDResponse">
+    </wsdl:output>
+      <wsdl:fault name="ClassNotFoundException" message="tns:ClassNotFoundException">
+    </wsdl:fault>
+      <wsdl:fault name="SQLException" message="tns:SQLException">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="GetUserUUIDClassServiceSoapBinding" type="tns:GetUserUUIDSEI">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetUserUUID">
+      <soap:operation soapAction="urn:GetUserUUID" style="document"/>
+      <wsdl:input name="GetUserUUID">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetUserUUIDResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ClassNotFoundException">
+        <soap:fault name="ClassNotFoundException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SQLException">
+        <soap:fault name="SQLException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="GetUserUUIDClassService">
+    <wsdl:port name="GetUserUUIDClassPort" binding="tns:GetUserUUIDClassServiceSoapBinding">
+      <soap:address location="http://localhost:9090/GetUserUUIDClassPort"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
