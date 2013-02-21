@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://UploadFiles.psr.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="unqualified" targetNamespace="http://UploadFiles.psr.com/" version="1.0">
+<xs:element name="UpLoad" type="tns:UpLoad"/>
+<xs:element name="UpLoadResponse" type="tns:UpLoadResponse"/>
+<xs:complexType name="UpLoad">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:base64Binary"/>
+      <xs:element minOccurs="0" name="arg1" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg2" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="UpLoadResponse">
+    <xs:sequence/>
+  </xs:complexType>
+</xs:schema>
