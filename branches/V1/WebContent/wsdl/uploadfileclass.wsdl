@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="UpLoadFileClassService" targetNamespace="http://UploadFiles.psr.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://UploadFiles.psr.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+<schema xmlns="http://www.w3.org/2001/XMLSchema">
+  <import namespace="http://UploadFiles.psr.com/" schemaLocation="uploadfileclass_schema1.xsd"/>
+</schema>
+  </wsdl:types>
+  <wsdl:message name="UpLoadResponse">
+    <wsdl:part name="parameters" element="tns:UpLoadResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UpLoad">
+    <wsdl:part name="parameters" element="tns:UpLoad">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="UpLoadFileSEI">
+    <wsdl:operation name="UpLoad">
+      <wsdl:input name="UpLoad" message="tns:UpLoad">
+    </wsdl:input>
+      <wsdl:output name="UpLoadResponse" message="tns:UpLoadResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="UpLoadFileClassServiceSoapBinding" type="tns:UpLoadFileSEI">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="UpLoad">
+      <soap:operation soapAction="urn:UpLoad" style="document"/>
+      <wsdl:input name="UpLoad">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="UpLoadResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="UpLoadFileClassService">
+    <wsdl:port name="UpLoadFileClassPort" binding="tns:UpLoadFileClassServiceSoapBinding">
+      <soap:address location="http://localhost:9090/UpLoadFileClassPort"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
