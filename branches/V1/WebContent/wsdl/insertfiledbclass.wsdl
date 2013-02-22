@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="InsertFileDBClassService" targetNamespace="http://UploadFiles.psr.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://UploadFiles.psr.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+<schema xmlns="http://www.w3.org/2001/XMLSchema">
+  <import namespace="http://UploadFiles.psr.com/" schemaLocation="insertfiledbclass_schema1.xsd"/>
+</schema>
+  </wsdl:types>
+  <wsdl:message name="ClassNotFoundException">
+    <wsdl:part name="ClassNotFoundException" element="tns:ClassNotFoundException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="InsertFileDB">
+    <wsdl:part name="parameters" element="tns:InsertFileDB">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="InsertFileDBResponse">
+    <wsdl:part name="parameters" element="tns:InsertFileDBResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SQLException">
+    <wsdl:part name="SQLException" element="tns:SQLException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="InsertFileNameSEI">
+    <wsdl:operation name="InsertFileDB">
+      <wsdl:input name="InsertFileDB" message="tns:InsertFileDB">
+    </wsdl:input>
+      <wsdl:output name="InsertFileDBResponse" message="tns:InsertFileDBResponse">
+    </wsdl:output>
+      <wsdl:fault name="ClassNotFoundException" message="tns:ClassNotFoundException">
+    </wsdl:fault>
+      <wsdl:fault name="SQLException" message="tns:SQLException">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="InsertFileDBClassServiceSoapBinding" type="tns:InsertFileNameSEI">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="InsertFileDB">
+      <soap:operation soapAction="urn:InsertFileDB" style="document"/>
+      <wsdl:input name="InsertFileDB">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="InsertFileDBResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ClassNotFoundException">
+        <soap:fault name="ClassNotFoundException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SQLException">
+        <soap:fault name="SQLException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="InsertFileDBClassService">
+    <wsdl:port name="InsertFileDBClassPort" binding="tns:InsertFileDBClassServiceSoapBinding">
+      <soap:address location="http://localhost:9090/InsertFileDBClassPort"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

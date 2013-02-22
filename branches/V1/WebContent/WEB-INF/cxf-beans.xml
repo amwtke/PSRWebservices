@@ -117,4 +117,12 @@
 			<bean class="org.apache.cxf.feature.LoggingFeature" />
 		</jaxws:features>
 	</jaxws:endpoint>
+	<jaxws:endpoint xmlns:tns="http://UploadFiles.psr.com/"
+		id="insertfiledbclass" implementor="com.psr.UploadFiles.InsertFileDBClass"
+		wsdlLocation="wsdl/insertfiledbclass.wsdl" endpointName="tns:InsertFileDBClassPort"
+		serviceName="tns:InsertFileDBClassService" address="/InsertFileDBClassPort">
+		<jaxws:features>
+			<bean class="org.apache.cxf.feature.LoggingFeature" />
+		</jaxws:features>
+	</jaxws:endpoint>
 </beans>
