@@ -7,6 +7,7 @@ import java.util.*;
 import javax.jws.WebService;
 
 import com.psr.model.*;
+import com.psr.util.FileUtil;
 import com.psr.util.JDBCUtil;
 
 @WebService(targetNamespace = "http://UploadFiles.psr.com/", endpointInterface = "com.psr.UploadFiles.InsertFileNameSEI", portName = "InsertFileDBClassPort", serviceName = "InsertFileDBClassService")
@@ -68,7 +69,7 @@ public class InsertFileDBClass implements InsertFileNameSEI {
 					cs.setInt(7, 0);//version
 					cs.setString(8, file.getFileDesc());
 					cs.setString(9,file.getFileName());
-					cs.setString(10, file.getFilePath());
+					cs.setString(10, FileUtil.PSRFileFolderWithOutEndSlash+"\\"+file.getFilePath());
 					cs.setString(11,file.getReId());
 					
 					cs.execute();
