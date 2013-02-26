@@ -4,8 +4,8 @@ import java.io.*;
 import java.io.IOException;
 
 public class FileUtil {
-	private static final String ProjectName = "PSRWS";
-	private static final String RootFolder ="UpFolder";
+	private static final String ProjectName = "psr";
+	private static final String RootFolder ="files";
 
 	/**
 	 * 获得指定文件的byte数组
