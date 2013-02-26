@@ -6,7 +6,7 @@ import java.io.IOException;
 public class FileUtil {
 	private static final String ProjectName = "psr";
 	private static final String RootFolder ="files";
-
+	public static final String PSRFileFolderWithOutEndSlash = getPorjectPath() + "\\" + RootFolder;
 	/**
 	 * 获得指定文件的byte数组
 	 */
@@ -75,7 +75,7 @@ public class FileUtil {
 	}
 
 	// 获取当前项目的绝对路径
-	static String getPorjectPath() {
+	public static String getPorjectPath() {
 		String nowpath; // 当前tomcat的bin目录的路径 如
 						// D:\java\software\apache-tomcat-6.0.14\bin
 		String tempdir;
