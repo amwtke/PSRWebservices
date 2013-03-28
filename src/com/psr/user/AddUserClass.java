@@ -54,6 +54,7 @@ public class AddUserClass implements AddUserSEI {
 			stmt = JDBCUtil.GetConnection().prepareCall(
 					"{call ADDUSER(?,?,?,?,?,?,?,?)}");
 			if (users != null && users.size() > 0) {
+				int runcount = 0;
 				for (User user : users) {
 					stmt.clearParameters();
 					
@@ -66,6 +67,21 @@ public class AddUserClass implements AddUserSEI {
 					stmt.setString(7, user.getUserName());
 					stmt.setString(8, user.getUserDesc());
 					stmt.execute();
+					runcount++;
+					
+					if(runcount==290)
+					{
+						stmt.close();
+						try {
+							Thread.sleep(100);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						stmt = JDBCUtil.GetConnection().prepareCall(
+								"{call ADDUSER(?,?,?,?,?,?,?,?)}");
+						runcount=0;
+					}
 				}
 			}
 		} catch (SQLException e) {
