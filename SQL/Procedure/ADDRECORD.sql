@@ -55,12 +55,14 @@ end if;
    Insert into PSR_RECORD (ID,CREATE_DATE,CREATE_USER,ENTITY_STATUS,UPDATE_DATE,UPDATE_USER,VERSION,APPROVERBY,APPROVERTIME,COMMENTS,COUNT,DANWEI,EQUIPTMENT,FACILITY,HAVEATTACHED,HAVEQIANGXIANG,HAVERUOXIANG,ISUPDATED,ISUPLOAD,INPUTTIME,INPUTUSER,INPUTUSERSUOXIE,ISACTIVITYINSPECTION,ISCOMMUNICATION,ISCOMPLIANCE,ISDOCUMENTREVISION,ISWALKDOWN,RESULT,RECORDDESCIPTION,RECORDNO,SENDBACKREASON,PSR_STATUS,TOPIC,TOPICDESC,UPLOADEDTIME,UPDATEDTIME,YAOSUBINHAO,ZHUANGTIBIANHAO) 
    values (v_id,v_create_date,v_create_user,v_entity_status,v_update_date,v_update_user,0,v_approverby,v_approvertime,v_comments,v_count,v_danwei,v_equiptment,v_facility,v_haveattached,v_haveqiangxiang,v_haveruoxiang,v_isupdated,v_isupload,v_inputtime,v_inputuser,v_inputusersuoxie,v_isactivityinspection,v_iscommunication,v_iscompliance,v_isdocumentrevision,v_iswalkdown,v_result,v_recorddesciption,v_recordno,v_sendbackreason,v_psr_status,v_topic,v_topicdesc,v_uploadedtime,v_updatedtime,v_yaosubinhao,v_zhuangtibianhao);
     commit;
- else
+    end if;
+ if vv_count=1 and vv_psrrecord_row.psr_status<>3 and vv_psrrecord_row.psr_status<>4 then
     dbms_output.put_line('¸üÐÂ!');
     update psr_record set --id=v_id, 
     create_date = v_create_date, create_user = v_create_user, entity_status = v_entity_status,update_date =v_update_date
     ,update_user = v_update_user,version = v_version , approverby = v_approverby , approvertime = v_approvertime, comments = v_comments, count = v_count,danwei = v_danwei,equiptment=v_equiptment,facility=v_facility,haveattached= v_haveattached,haveqiangxiang=v_haveqiangxiang,haveruoxiang=v_haveruoxiang,isupdated = v_isupdated,ISUPLOAD = v_isupload,inputtime = v_inputtime,inputuser= v_inputuser,inputusersuoxie = v_inputusersuoxie
     ,ISACTIVITYINSPECTION = v_isactivityinspection,ISCOMMUNICATION=v_iscommunication,ISCOMPLIANCE = v_iscompliance,ISDOCUMENTREVISION=v_isdocumentrevision,ISWALKDOWN= v_iswalkdown,RESULT = v_result,RECORDDESCIPTION=v_recorddesciption,RECORDNO=v_recordno,SENDBACKREASON=v_sendbackreason,PSR_STATUS=v_psr_status,TOPIC = v_topic,TOPICDESC = v_topicdesc,UPLOADEDTIME = v_uploadedtime,UPDATEDTIME=v_updatedtime,YAOSUBINHAO= v_yaosubinhao,ZHUANGTIBIANHAO = v_zhuangtibianhao
     where psr_record.recordno = v_recordno;
+    commit;
   end if;
 end addrecord;
