@@ -42,22 +42,22 @@ PROCEDURE ADDRECORD
 ) as 
 --vv_count integer;
 --vv_uploadedtime date;
-vv_psrrecord_row psr_record%ROWTYPE;
+--vv_psrrecord_row psr_record%ROWTYPE;
 vv_count integer;
 begin
 select count(*) into vv_count from psr_record where recordno = v_recordno;
 
-if vv_count >0 then
-  select * into vv_psrrecord_row  from psr_record where recordno = v_recordno ;
-end if;
+--if vv_count >0 then
+--  select * into vv_psrrecord_row  from psr_record where recordno = v_recordno ;
+--end if;
   
   if vv_count=0 then--or vv_psrrecord_row.id is null or vv_psrrecord_row.uploadedtime is null then
    Insert into PSR_RECORD (ID,CREATE_DATE,CREATE_USER,ENTITY_STATUS,UPDATE_DATE,UPDATE_USER,VERSION,APPROVERBY,APPROVERTIME,COMMENTS,COUNT,DANWEI,EQUIPTMENT,FACILITY,HAVEATTACHED,HAVEQIANGXIANG,HAVERUOXIANG,ISUPDATED,ISUPLOAD,INPUTTIME,INPUTUSER,INPUTUSERSUOXIE,ISACTIVITYINSPECTION,ISCOMMUNICATION,ISCOMPLIANCE,ISDOCUMENTREVISION,ISWALKDOWN,RESULT,RECORDDESCIPTION,RECORDNO,SENDBACKREASON,PSR_STATUS,TOPIC,TOPICDESC,UPLOADEDTIME,UPDATEDTIME,YAOSUBINHAO,ZHUANGTIBIANHAO) 
    values (v_id,v_create_date,v_create_user,v_entity_status,v_update_date,v_update_user,0,v_approverby,v_approvertime,v_comments,v_count,v_danwei,v_equiptment,v_facility,v_haveattached,v_haveqiangxiang,v_haveruoxiang,v_isupdated,v_isupload,v_inputtime,v_inputuser,v_inputusersuoxie,v_isactivityinspection,v_iscommunication,v_iscompliance,v_isdocumentrevision,v_iswalkdown,v_result,v_recorddesciption,v_recordno,v_sendbackreason,v_psr_status,v_topic,v_topicdesc,v_uploadedtime,v_updatedtime,v_yaosubinhao,v_zhuangtibianhao);
     commit;
     end if;
- if vv_count=1 and vv_psrrecord_row.psr_status<>3 and vv_psrrecord_row.psr_status<>4 then
-    dbms_output.put_line('更新!');
+ if vv_count=1 then--and vv_psrrecord_row.psr_status<>3 and vv_psrrecord_row.psr_status<>4 then
+    --dbms_output.put_line('更新!');
     update psr_record set --id=v_id, 
     create_date = v_create_date, create_user = v_create_user, entity_status = v_entity_status,update_date =v_update_date
     ,update_user = v_update_user,version = v_version , approverby = v_approverby , approvertime = v_approvertime, comments = v_comments, count = v_count,danwei = v_danwei,equiptment=v_equiptment,facility=v_facility,haveattached= v_haveattached,haveqiangxiang=v_haveqiangxiang,haveruoxiang=v_haveruoxiang,isupdated = v_isupdated,ISUPLOAD = v_isupload,inputtime = v_inputtime,inputuser= v_inputuser,inputusersuoxie = v_inputusersuoxie
