@@ -34,9 +34,12 @@ public class AddResultsClass implements AddResultsSEI{
 		CallableStatement cs = null;
 		try {
 			if (results != null && results.size() > 0)
-				for (RecordResult result : results) {
-					cs = JDBCUtil.GetConnection().prepareCall(
-							"{call ADDRESULT(?,?,?,?,?,?,?,?,?,?,?,?,?,?)}");
+			{
+				int runcount = 0;
+				cs = JDBCUtil.GetConnection().prepareCall(
+						"{call ADDRESULT(?,?,?,?,?,?,?,?,?,?,?,?,?,?)}");
+				for (RecordResult result : results) 
+				{
 					cs.clearParameters();
 
 					cs.setString(1, result.getId());
@@ -75,7 +78,22 @@ public class AddResultsClass implements AddResultsSEI{
 					cs.setInt(13, result.getResultNo());
 					cs.setString(14, result.getRecordNo());
 					cs.execute();
+					runcount++;
+					
+					if(runcount!=290)
+						continue;
+					cs.close();
+					try {
+						Thread.sleep(100);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					cs = JDBCUtil.GetConnection().prepareCall(
+							"{call ADDRESULT(?,?,?,?,?,?,?,?,?,?,?,?,?,?)}");
+					runcount=0;
 				}
+			}
 		} catch (SQLException ex) {
 			ex.printStackTrace();
 			throw ex;
