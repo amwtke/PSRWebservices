@@ -4,13 +4,21 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import com.psr.config.ConfigurationManager;
+
 public class JDBCUtil {
 	//2012-20121120KC PRODUCE
-	private final static String DB_DRIVER = "oracle.jdbc.driver.OracleDriver";
-	private final static String DB_CONNECTION = "jdbc:oracle:thin:@10.16.31.20:1521:psr1";
-	private final static String DB_NAME = "psr";
-	private final static String DB_PWd = "123456";
-
+	private final static String DB_DRIVER = ConfigurationManager.getString("DB_DRIVER");//"oracle.jdbc.driver.OracleDriver";
+	private final static String DB_CONNECTION = ConfigurationManager.getString("DB_CONNECTION");//"jdbc:oracle:thin:@psr:1521:psr";
+	private final static String DB_NAME = ConfigurationManager.getString("DB_NAME");//"psr";
+	private final static String DB_PWd = ConfigurationManager.getString("DB_PWd");//"123456";
+//	public static void main(String[] args)
+//	{
+//		System.out.println(DB_DRIVER);
+//		System.out.println(DB_CONNECTION);
+//		System.out.println(DB_NAME);
+//		System.out.println(DB_PWd);
+//	}
 	static Connection conn = null;
 	static {
 		try {
